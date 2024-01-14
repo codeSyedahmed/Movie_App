@@ -1,0 +1,34 @@
+﻿@model Movie_App.Models.Movie
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Movie</h2>
+
+@using (Html.BeginForm("Edit", "Movie", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label>Movie Name</label>
+    @Html.TextBoxFor(x => x.name, new { @class = "form-control", placeholder = "Movie Name" })
+
+    <label>Image</label>
+    <input type="file" id="imageFile" name="imageFile" onchange="ChangeShownImage(event)"/>
+    <script>
+        function ChangeShownImage(event) {
+            document.getElementById("shownImage").src = URL.createObjectURL(event.target.files[0]);
+    }</script>
+    <img src="@Url.Content(Session["Image"].ToString())" width="60" height="60" id="shownImage"/>
+    <br />
+
+    <label>Description</label>
+    @Html.TextAreaFor(x => x.description, new { @class = "form-control", @placeholder = "Movie Description" })
+
+    <label>Category</label>
+    @Html.DropDownListFor(x => x.cat_id, ViewBag.CategoriesList as SelectList, "Select Category", new { @class = "form-control" })
+
+    <br />
+    <input type="submit" value="Save" />
+
+}
+
+@Html.ActionLink("Back to List", "Index")

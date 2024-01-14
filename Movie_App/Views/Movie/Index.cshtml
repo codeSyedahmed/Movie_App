@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Movie_App.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Movies List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Movie Name</th>
+            <th>Image</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => item.name)</td>
+                <td><img src="@Url.Content(item.image)" width="60" height="60"/></td>
+                <td>@Html.DisplayFor(x => item.description)</td>
+                <td>@Html.DisplayFor(x => item.Categories.name)</td>
+                <td>
+                    <a href="@Url.Action("Details", new { id = item.movie_id })">Details</a> |
+                    <a href="@Url.Action("Edit", new { id = item.movie_id })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = item.movie_id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

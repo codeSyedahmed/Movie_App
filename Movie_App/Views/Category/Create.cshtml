@@ -1,0 +1,19 @@
+﻿@model Movie_App.Models.Categories
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add Category</h2>
+
+@using (Html.BeginForm("Create", "Category", FormMethod.Post))
+{
+    <label>Category Name</label>
+    @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+
+    <br />
+    <input type="submit" value="Add Category" />
+
+}
+
+@Html.ActionLink("Back to List", "Index")

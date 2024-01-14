@@ -1,0 +1,16 @@
+﻿@model Movie_App.Models.Categories
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Category Name</th>
+        <td>@Model.name</td>
+    </tr>
+</table>
+
+@Html.ActionLink("Back to List", "Index")

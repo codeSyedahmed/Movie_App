@@ -1,0 +1,19 @@
+﻿@model Movie_App.Models.Categories
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+{
+    <label>Category Name</label>
+    @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+
+    <br />
+    <input type="submit" value="Edit Category" />
+
+}
+
+@Html.ActionLink("Back to List", "Index")
